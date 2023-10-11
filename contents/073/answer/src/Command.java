@@ -21,7 +21,7 @@ public interface Command<T> {
   public void execute();
 
   /**
-   * 処理状況を取得する.
+   * 処理状況を取得する..
    *
    * @return ステータス. 初期値はNONE.
    */

@@ -44,6 +44,11 @@
     <!-- ============================ -->
     <!-- Compile Scoped Dependencies  -->
     <!-- ============================ -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>32.1.2-jre</version>
+    </dependency>
 
     <!-- ============================ -->
     <!-- Runtime Scoped Dependencies  -->
