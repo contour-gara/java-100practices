@@ -22,7 +22,7 @@ public class Main {
     }
 
     private static void throwException() {
-        throw new MyException("Throw exception!!!");
+        throw new MyException("Exception!!!");
     }
 
     private static void writeFile(String stacktrace) {
@@ -32,6 +32,7 @@ public class Main {
                 )
         ) {
             writer.write(stacktrace);
+            writer.newLine();
         } catch (IOException e) {
             log.warn("", e);
         }

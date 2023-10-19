@@ -1,1 +1,1 @@
-myanswer01.MyException: Throw exception!!!\\\n	at myanswer01.Main.throwException(Main.java:25)\\\n	at myanswer01.Main.main(Main.java:16)\\\n
+myanswer01.MyException: Exception!!!\\\n	at myanswer01.myanswer01.Main.throwException(myanswer01.Main.java:25)\\\n	at myanswer01.myanswer01.Main.main(myanswer01.Main.java:16)\\\n
