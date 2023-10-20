@@ -15,11 +15,11 @@ public class MyClient {
     private final OkHttpClient client;
 
     public MyClient() {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.connectTimeout(150, SECONDS);
-        builder.readTimeout(150, SECONDS);
-        builder.writeTimeout(150, SECONDS);
-        client = builder.build();
+        client = new OkHttpClient.Builder()
+                .connectTimeout(10, SECONDS)
+                .readTimeout(10, SECONDS)
+                .writeTimeout(10, SECONDS)
+                .build();
     }
 
     public void saveHeaderAndBody(String url) {
@@ -45,7 +45,7 @@ public class MyClient {
         }
     }
 
-    private void saveHeader(Response response) {
+    private void saveHeader(Response response) throws IOException {
         writeFile("header.txt", response.headers().toString());
     }
 
@@ -53,15 +53,13 @@ public class MyClient {
         writeFile("body.txt", response.body().string());
     }
 
-    private void writeFile(String filename, String write) {
+    private void writeFile(String filename, String write) throws IOException {
         try (
                 BufferedWriter writer = Files.newBufferedWriter(
                         Path.of("./contents/085/src/main/resources/" + filename)
                 )
         ) {
             writer.write(write);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

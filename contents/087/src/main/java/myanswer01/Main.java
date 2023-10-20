@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             throwException();
-        } catch (Exception e) {
+        } catch (MyException e) {
             String stackTrace = getStackTrace(e);
             stackTrace = stackTrace.replace("\n", "\\\\\\n");
             writeFile(stackTrace);

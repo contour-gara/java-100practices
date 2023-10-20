@@ -6,6 +6,6 @@ public class Main {
 
         MyClient client = new MyClient();
         client.saveHeaderAndBody(url);
-        client.saveHeaderAndBody("https://httpbin.org/status/400");
+//        client.saveHeaderAndBody("https://httpbin.org/status/400");
     }
 }
