@@ -20,6 +20,7 @@ public final class JsonUtil {
     }
 
     private static String createJson(String[] args) {
+        // switch式に変更
         if (args[0].equals("-d")) return getJson();
         if ((args[0].equals("-s")) && (args.length == 3))
             return String.format("{\"id\":%s,\"name\":%s}", args[1], args[2]);

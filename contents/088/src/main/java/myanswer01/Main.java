@@ -8,6 +8,8 @@ public class Main {
         Item item1 = new Item(1, "gara", null);
 //        marshal(item1);
 
+        // コマンドラインプログラムのライブラリ
+
         // -s 1 gara aiueo
         // -s 1 gara
         // -d
