@@ -15,7 +15,7 @@ $ jar cvfe Answer.jar package.Answer010 package\Answer010.class
 マニフェストファイルが作成され、MANIFEST.MFに
 
 ```
-myanswer01.Main-Class: Answer010
+myanswer01.myanswer01.Main-Class: Answer010
 ```
 
 が記載されていればOK
