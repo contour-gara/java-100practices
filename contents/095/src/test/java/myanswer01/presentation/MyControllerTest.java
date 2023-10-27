@@ -1,33 +1,40 @@
 package myanswer01.presentation;
 
+import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
+import static org.springframework.http.HttpStatus.OK;
 
-@SpringBootTest
+@WebMvcTest
 class MyControllerTest {
     @Autowired
-    private MyController sut;
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(sut).build();
+        RestAssuredMockMvc.mockMvc(mockMvc);
     }
 
     @Test
-    void helloエンドポイントが200を返す() throws Exception {
-        mockMvc.perform(get("/hello")).andExpect(status().isOk());
+    void helloエンドポイントが200を返す() {
+        given()
+                .when()
+                .get("/hello")
+                .then()
+                .status(OK);
     }
 
     @Test
-    void goodbyeエンドポイントが200を返す() throws Exception {
-        mockMvc.perform(get("/goodbye")).andExpect(status().isOk());
+    void goodbyeエンドポイントが200を返す() {
+        given()
+                .when()
+                .get("/goodbye")
+                .then()
+                .status(OK);
     }
 }
