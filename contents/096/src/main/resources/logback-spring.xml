@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <timestamp key="time" datePattern="yyyyMMdd"/>
+
+    <appender name="IP" class="ch.qos.logback.core.FileAppender">
+        <file>./contents/095/src/main/resources/access.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE_IP" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <logger name="myanswer01.aop" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE_IP"/>
+        <appender-ref ref="IP"/>
+    </logger>
+</configuration>
