@@ -2,10 +2,10 @@ package myanswer01;
 
 public class MyAnswer01 {
     public static void main(String[] args) {
-        User user = new User(
+        User user = User.of(
                 "gara",
-                "gara",
-                "gara@334",
+                "garaa",
+                "gara@334.co.jp",
                 "gara",
                 "gara",
                 1990,
@@ -13,5 +13,7 @@ public class MyAnswer01 {
                 1,
                 "女性"
         );
+
+        System.out.println(user);
     }
 }

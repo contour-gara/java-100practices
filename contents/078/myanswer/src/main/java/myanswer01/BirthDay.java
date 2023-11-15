@@ -12,6 +12,7 @@ public record BirthDay(Integer year, Integer month, Integer day) {
         if (isNull(month)) throw new IllegalArgumentException("月が入力されていません。");
         if (isNull(day)) throw new IllegalArgumentException("日が入力されていません。");
 
+        // TODO: private メソッドにしよう
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         try {

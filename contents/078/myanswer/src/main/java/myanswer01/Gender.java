@@ -7,10 +7,10 @@ public enum Gender {
     FEMALE("女性"),
     OTHER("その他");
 
-    private final String genderString;
+    private final String gender;
 
-    Gender(String genderString) {
-        this.genderString = genderString;
+    Gender(String gender) {
+        this.gender = gender;
     }
 
     public static Gender of(String genderString) {

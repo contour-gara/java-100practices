@@ -1,14 +1,14 @@
 package myanswer01;
 
-public class User {
-    private final LoginName loginName;
-    private final NickName nickName;
-    private final Mail mail;
-    private final Password password;
-    private final BirthDay birthDay;
-    private final Gender gender;
-
-    public User(
+public record User(
+        LoginName loginName,
+        NickName nickName,
+        Mail mail,
+        Password password,
+        BirthDay birthDay,
+        Gender gender
+) {
+    public static User of(
             String loginNameString,
             String nickNameString,
             String mailString,
@@ -19,35 +19,13 @@ public class User {
             Integer day,
             String genderString
     ) {
-        this.loginName = new LoginName(loginNameString);
-        this.nickName = new NickName(nickNameString);
-        this.mail = new Mail(mailString);
-        this.password = new Password(passwordString, confirmationPassword);
-        this.birthDay = new BirthDay(year, month, day);
-        this.gender = Gender.of(genderString);
-    }
-
-    public LoginName getLoginName() {
-        return loginName;
-    }
-
-    public NickName getNickName() {
-        return nickName;
-    }
-
-    public Mail getMail() {
-        return mail;
-    }
-
-    public Password getPassword() {
-        return password;
-    }
-
-    public BirthDay getBirthDay() {
-        return birthDay;
-    }
-
-    public Gender getGender() {
-        return gender;
+        return new User(
+                new LoginName(loginNameString),
+                new NickName(nickNameString),
+                new Mail(mailString),
+                new Password(passwordString, confirmationPassword),
+                new BirthDay(year, month, day),
+                Gender.of(genderString)
+        );
     }
 }
