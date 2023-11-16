@@ -27,8 +27,10 @@
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
 
+        <logback.version>1.4.11</logback.version>
         <lombok.version>1.18.30</lombok.version>
         <assertj.version>3.24.2</assertj.version>
+        <mockito.version>5.7.0</mockito.version>
     </properties>
 
     <dependencyManagement>
@@ -47,6 +49,11 @@
         <!-- ============================ -->
         <!-- Compile Scoped Dependencies  -->
         <!-- ============================ -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
 
         <!-- ============================ -->
         <!-- Runtime Scoped Dependencies  -->
@@ -69,6 +76,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -81,6 +89,20 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito.version}</version>
         </dependency>
     </dependencies>
 
