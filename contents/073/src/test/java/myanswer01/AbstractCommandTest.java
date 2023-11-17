@@ -2,44 +2,42 @@ package myanswer01;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
 
 class AbstractCommandTest {
+    @Spy
     AbstractCommand abstractCommand;
 
     @BeforeEach
     void setUp() {
-        abstractCommand = spy(AbstractCommand.class);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
     void コマンド実行前() {
         // assert
-        Status actual = abstractCommand.getStatus();
-        Status expected = Status.NONE;
-        assertThat(actual).isEqualTo(expected);
+        assertThat(abstractCommand.getStatus()).isEqualTo(Status.NONE);
+        assertThat(abstractCommand.getResult()).isNull();
+        assertThat(abstractCommand.getException()).isNull();
     }
 
     @Test
     void コマンド終了後() {
         // setup
-        when(abstractCommand.executeInner())
-                .thenReturn(1);
+        doReturn(1).when(abstractCommand).executeInner();
 
         // execute
         abstractCommand.execute();
 
         // assert
-        Status actualStatus = abstractCommand.getStatus();
-        Status expectedStatus = Status.SUCCESS;
-        assertThat(actualStatus).isEqualTo(expectedStatus);
-
-        Object actualResult = abstractCommand.getResult();
-        assertThat(actualResult).isEqualTo(1);
+        assertThat(abstractCommand.getStatus()).isEqualTo(Status.SUCCESS);
+        assertThat(abstractCommand.getResult()).isEqualTo(1);
+        assertThat(abstractCommand.getException()).isNull();
     }
 
     @Test
@@ -51,11 +49,8 @@ class AbstractCommandTest {
         abstractCommand.execute();
 
         // assert
-        Status actualStatus = abstractCommand.getStatus();
-        Status expectedStatus = Status.ERROR;
-        assertThat(actualStatus).isEqualTo(expectedStatus);
-
-        Exception actualException = abstractCommand.getException();
-        assertThat(actualException).isInstanceOf(RuntimeException.class);
+        assertThat(abstractCommand.getStatus()).isEqualTo(Status.ERROR);
+        assertThat(abstractCommand.getResult()).isNull();
+        assertThat(abstractCommand.getException()).isInstanceOf(RuntimeException.class);
     }
 }
